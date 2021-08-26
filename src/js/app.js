@@ -16,9 +16,16 @@ let width = window.innerWidth;
 let height = window.innerHeight;
 const BOTTOM_BASE_COLOR = "hsla(242, 45%, 62%, 1)";
 const TOP_BASE_COLOR = "hsla(219, 46%, 74%, 1)";
-let triangle_size = 300;
+let triangle_size = 300 *  0.7;
 let time = 0;
 let particles = [];
+
+if (window.innerWidth < 1000) {
+    width = window.innerWidth*0.7;
+    height = window.innerHeight*0.7;
+    triangle_size = 300*0.5;
+}
+
 
 class Particle {
     constructor(position, speed, length, color, s) {
@@ -74,6 +81,13 @@ const sketch = (s) => {
     s.windowResized = () => {
         width = window.innerWidth;
         height = window.innerHeight;
+
+        if (window.innerWidth < 1000) {
+            width = window.innerWidth*0.7;
+            height = window.innerHeight*0.7;
+            triangle_size = 300*0.5;
+        }
+
         s.resizeCanvas(width, height);
     }
 };
