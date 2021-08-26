@@ -41,6 +41,7 @@ class Particle {
 const sketch = (s) => {
     s.setup = () => {
         s.createCanvas(width, height);
+        s.frameRate(22)
     };
 
     s.draw = () => {
@@ -62,13 +63,13 @@ const sketch = (s) => {
             s.line(center_x - length/2, i, center_x + length/2, i)
         }
         if(s.noise(time) > 0.3) {
-            particles.push(new Particle(new Victor(s.random(width), 0), new Victor(0, 50), 500, "#ffffff70", s))
+            particles.push(new Particle(new Victor(s.random(width), 0), new Victor(0, 100), 500, "#ffffff70", s))
         }
         particles.forEach(particle => {
             particle.update();
         });
         
-        time ++
+        time += 2
     };
     s.windowResized = () => {
         width = window.innerWidth;
